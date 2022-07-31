@@ -1,0 +1,21 @@
+name: Update words list
+on:
+  schedule:
+    - cron: "0 12 * * *"
+
+jobs:
+  update_words_list:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: "1.24.1"
+      - name: Update words list
+        run: deno run --allow-net pedantix_mots.ts > mots.txt
+      - name: Update resources
+        uses: test-room-7/action-update-file@v1
+        with:
+            file-path: mots.txt
+            commit-msg: Update words list
+            github-token: ${{ secrets.GITHUB_TOKEN }}  

@@ -1,7 +1,9 @@
 name: Update words list
 on:
+  push:
+  workflow_dispatch:
   schedule:
-    - cron: "0 12 * * *"
+    - cron: "10 10 * * *"
 
 jobs:
   update_words_list:

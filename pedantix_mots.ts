@@ -1,20 +1,20 @@
-let respPedantix = await fetch("https://cemantix.herokuapp.com/pedantix/history");
-let pages = (await respPedantix.json()) as any[];
+let respPedantix: Response = await fetch("https://cemantix.herokuapp.com/pedantix/history");
+let pages: any[] = await respPedantix.json();
 pages = pages.map(page => page[2][0]).filter(Boolean);
 
 let tousLesMots: {[key: string]: number} = {};
 
 for (var page in pages) {
-  let respWikipedia = await fetch(`https://fr.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${pages[page]}`);
-  let respWikipediaJson = await respWikipedia.json();
-  let pageId = Object.keys(respWikipediaJson.query.pages)[0];
-  let mots = respWikipediaJson.query.pages[pageId].extract.toLowerCase().replaceAll(/\.|'|:|\(|\)|,|’|\/|«|»|(\\[\w]+)|=|{|(\w*})|¯|;/g, ' ').split(/\s+/).filter(Boolean);
-  let motsOccurences: {[key: string]: number} = mots.reduce((p, mot) => {
-    if (!p.hasOwnProperty(mot)) {
-      p[mot] = 0;
+  let respWikipedia: Response = await fetch(`https://fr.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${pages[page]}`);
+  let respWikipediaJson: any = await respWikipedia.json();
+  let pageId: string = Object.keys(respWikipediaJson.query.pages)[0];
+  let mots: string[] = respWikipediaJson.query.pages[pageId].extract.toLowerCase().split(/[^\p{Letter}]+/gu).filter(Boolean);
+  let motsOccurences: {[key: string]: number} = mots.reduce((acc, mot) => {
+    if (!acc.hasOwnProperty(mot)) {
+      acc[mot] = 0;
     }
-    p[mot]++;
-    return p;
+    acc[mot]++;
+    return acc;
   }, {});
   if (!tousLesMots) {
     tousLesMots = motsOccurences;
@@ -29,4 +29,4 @@ for (var page in pages) {
   }
 }
 
-console.log(Object.entries(tousLesMots).filter(mot => mot[1] > 0).sort(([,a],[,b]) => b-a).map(foo => `${foo[0]} ${foo[1]}`).slice(0, 100).join('\n'));
+console.log(Object.entries(tousLesMots).sort(([,a],[,b]) => b-a).map(motAvecNombreOccurences => `${motAvecNombreOccurences[0]} ${motAvecNombreOccurences[1]}`).slice(0, 100).join('\n'));

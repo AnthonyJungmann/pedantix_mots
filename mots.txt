@@ -1,100 +1,100 @@
-de 1360
-la 921
-l 640
-et 596
-le 513
-des 456
-à 431
-en 424
-les 421
-d 408
-est 393
-du 321
-un 289
-une 262
-dans 243
-par 220
-au 168
-ou 148
-plus 136
-qui 129
-pour 128
-il 127
-elle 99
-a 98
-que 98
-sont 96
-sur 95
-se 90
-avec 83
-son 78
-comme 78
-sa 63
-ville 61
-s 55
-ce 55
-été 53
-aux 52
-c 51
-ses 46
-ont 45
-aussi 45
-également 44
-leur 42
-siècle 41
-sous 40
-qu 40
-guerre 39
-dont 39
-cette 39
-autres 37
-mais 37
-monde 37
-après 36
-très 36
-eau 36
-entre 35
-depuis 35
-où 35
-être 34
-pas 34
-années 34
-pays 33
-états 32
-n 31
-deux 31
-nom 30
-ainsi 30
-france 30
-ne 29
-ils 29
-peut 29
-souvent 28
-ces 28
-empire 27
-fait 27
-encore 27
-plongée 26
-on 25
-lors 25
-sécurité 25
-plusieurs 24
-même 23
-bien 23
-île 23
-grande 23
-cas 22
-partie 22
-habitants 21
-capitale 21
-unis 21
-t 21
-nombreux 21
-notamment 21
-nationale 21
-tout 20
-m 20
-sud 20
-certains 20
-jusqu 20
-partir 19
+de
+la
+l
+et
+le
+des
+à
+en
+les
+d
+est
+du
+un
+une
+dans
+par
+au
+ou
+plus
+qui
+pour
+il
+elle
+a
+que
+sont
+sur
+se
+avec
+son
+comme
+sa
+ville
+s
+ce
+été
+aux
+c
+ses
+ont
+aussi
+également
+leur
+siècle
+sous
+qu
+guerre
+dont
+cette
+autres
+mais
+monde
+après
+très
+eau
+entre
+depuis
+où
+être
+pas
+années
+pays
+états
+n
+deux
+nom
+ainsi
+france
+ne
+ils
+peut
+souvent
+ces
+empire
+fait
+encore
+plongée
+on
+lors
+sécurité
+plusieurs
+même
+bien
+île
+grande
+cas
+partie
+habitants
+capitale
+unis
+t
+nombreux
+notamment
+nationale
+tout
+m
+sud
+certains
+jusqu
+partir

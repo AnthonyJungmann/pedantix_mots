@@ -14,7 +14,7 @@ jobs:
         with:
           deno-version: "1.24.1"
       - name: Update words list
-        run: deno run --allow-net pedantix_mots.ts > mots.txt
+        run: deno run --allow-net --allow-write pedantix_mots.ts
       - name: Update resources
         uses: test-room-7/action-update-file@v1
         with:

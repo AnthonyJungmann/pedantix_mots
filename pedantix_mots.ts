@@ -29,4 +29,14 @@ for (var page in pages) {
   }
 }
 
-console.log(Object.entries(tousLesMots).sort(([,a],[,b]) => b-a).map(motAvecNombreOccurences => `${motAvecNombreOccurences[0]} ${motAvecNombreOccurences[1]}`).slice(0, 100).join('\n'));
+const mots = Object.entries(tousLesMots).sort(([,a],[,b]) => b-a).map(motAvecNombreOccurences => `${motAvecNombreOccurences[0]}`).slice(0, 100).join('\n');
+
+await Deno.writeTextFile("mots.txt", mots);
+
+
+let respStopwords: Response = await fetch("https://raw.githubusercontent.com/stopwords-iso/stopwords-fr/master/stopwords-fr.json");
+let stopWords: string[] = await respStopwords.json();
+
+const motsSansStopWords = Object.entries(tousLesMots).filter(([mot,]) => !stopWords.includes(mot)).sort(([,a],[,b]) => b-a).map(motAvecNombreOccurences => `${motAvecNombreOccurences[0]}`).slice(0, 100).join('\n');
+
+await Deno.writeTextFile("mots_sans_stopwords.txt", motsSansStopWords);

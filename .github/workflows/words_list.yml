@@ -18,6 +18,8 @@ jobs:
       - name: Update resources
         uses: test-room-7/action-update-file@v1
         with:
-            file-path: mots.txt
+            file-path: |
+              mots.txt
+              mots_sans_stopwords.txt
             commit-msg: Update words list
             github-token: ${{ secrets.GITHUB_TOKEN }}  

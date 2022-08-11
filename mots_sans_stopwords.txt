@@ -5,9 +5,9 @@ siècle
 états
 monde
 eau
+pays
 nom
 années
-pays
 france
 unis
 empire
@@ -23,10 +23,10 @@ partir
 nationale
 fin
 sud
+nord
 masse
 grand
 millions
-nord
 français
 new
 suite
@@ -37,6 +37,7 @@ histoire
 temps
 fonction
 lieu
+politique
 point
 exemple
 terme
@@ -51,7 +52,6 @@ uranium
 av
 xixe
 bibliothèque
-politique
 os
 york
 mondiale
@@ -69,6 +69,7 @@ présence
 région
 australie
 psychologie
+population
 km
 forme
 famille
@@ -92,7 +93,6 @@ mondial
 mer
 patrimoine
 volumique
-population
 important
 espèces
 chevaux

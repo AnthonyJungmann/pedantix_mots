@@ -5,9 +5,9 @@ guerre
 siècle
 monde
 eau
+années
 pays
 nom
-années
 unis
 france
 grande
@@ -24,12 +24,13 @@ français
 fin
 partir
 nationale
+temps
 nord
 masse
+fonction
 grand
 millions
 lieu
-fonction
 new
 région
 ouest
@@ -40,7 +41,6 @@ royaume
 art
 période
 histoire
-temps
 nombre
 située
 politique
@@ -49,6 +49,7 @@ exemple
 terme
 displaystyle
 système
+compte
 physique
 mer
 existe
@@ -62,9 +63,9 @@ vie
 terre
 mondiale
 propriétés
-compte
 manchester
 champ
+langage
 britannique
 population
 forme
@@ -76,6 +77,7 @@ onde
 présence
 australie
 psychologie
+programmation
 mort
 famille
 éléments
@@ -96,5 +98,3 @@ principalement
 anglais
 base
 actinides
-plutonium
-ensemble

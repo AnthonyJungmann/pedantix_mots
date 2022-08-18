@@ -1,21 +1,21 @@
 ville
 également
 siècle
-guerre
 états
-monde
+guerre
 années
+monde
 eau
 pays
 nom
-grande
 unis
+grande
 france
+sud
 empire
 île
 sécurité
 plongée
-sud
 partie
 cas
 fin
@@ -46,6 +46,7 @@ royaume
 art
 période
 histoire
+mer
 nombre
 située
 politique
@@ -53,7 +54,6 @@ point
 displaystyle
 compte
 physique
-mer
 existe
 uranium
 av
@@ -68,6 +68,8 @@ mondiale
 propriétés
 manchester
 champ
+mort
+amérique
 sens
 origine
 comédie
@@ -87,7 +89,6 @@ ensemble
 genre
 époque
 programmation
-mort
 famille
 éléments
 national
@@ -97,4 +98,3 @@ généralement
 ligne
 animaux
 statue
-solaire

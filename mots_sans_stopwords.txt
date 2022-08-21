@@ -48,16 +48,17 @@ royaume
 art
 période
 histoire
+existe
 mer
 située
 politique
 point
 displaystyle
+sens
 développement
 milliards
 compte
 physique
-existe
 uranium
 av
 bibliothèque
@@ -71,12 +72,12 @@ mondiale
 propriétés
 manchester
 champ
+absolu
 important
 recherche
 corps
 mort
 amérique
-sens
 origine
 comédie
 langage
@@ -86,6 +87,7 @@ production
 onde
 australie
 psychologie
+âge
 anglais
 patrimoine
 domaine
@@ -96,5 +98,3 @@ ensemble
 genre
 époque
 programmation
-famille
-éléments

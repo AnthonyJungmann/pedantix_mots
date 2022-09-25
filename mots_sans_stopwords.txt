@@ -1,5 +1,5 @@
-états
 également
+états
 pays
 ville
 eau
@@ -16,14 +16,14 @@ plongée
 nom
 empire
 amérique
-cas
 exemple
+cas
+partir
 terme
 mer
 millions
 nationale
 années
-partir
 politique
 nord
 partie
@@ -41,7 +41,6 @@ europe
 terre
 notion
 espace
-importante
 anglais
 afrique
 displaystyle
@@ -51,6 +50,7 @@ mort
 capitale
 physique
 animaux
+importante
 xixe
 markov
 compagnie
@@ -58,7 +58,6 @@ noix
 bibliothèque
 uranium
 km
-origine
 espèce
 espèces
 mondiale
@@ -73,6 +72,7 @@ manchester
 os
 ouest
 région
+origine
 lieu
 grand
 disney
@@ -96,5 +96,5 @@ production
 langage
 psychologie
 statue
-désigne
-point
+produits
+époque

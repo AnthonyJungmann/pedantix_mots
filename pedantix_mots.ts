@@ -1,6 +1,6 @@
 import _ from "https://deno.land/x/lodash@4.17.15-es/lodash.js";
 
-const respPedantix: Response = await fetch("https://cemantix.herokuapp.com/pedantix/history");
+const respPedantix: Response = await fetch("https://cemantix.certitudes.org/pedantix/history");
 let pages: any[] = await respPedantix.json();
 pages = pages.map((page) => page[2][0]).filter(Boolean);
 

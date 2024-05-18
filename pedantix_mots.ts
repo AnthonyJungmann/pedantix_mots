@@ -33,6 +33,6 @@ await Deno.writeTextFile("mots.txt", mots);
 const respStopwords: Response = await fetch("https://raw.githubusercontent.com/stopwords-iso/stopwords-fr/master/stopwords-fr.json");
 const stopWords: string[] = await respStopwords.json();
 
-const motsSansStopWords = Object.entries(tousLesMots).filter(([mot]) => !stopWords.includes(mot)).sort(([, a], [, b]) => b - a).map(([mot,]) => `${mot}`).slice(0, 100).join("\n");
+const motsSansStopWords = Object.entries(tousLesMots).filter(([mot]) => !stopWords.includes(mot) && mot !== 'displaystyle').sort(([, a], [, b]) => b - a).map(([mot,]) => `${mot}`).slice(0, 100).join("\n");
 
 await Deno.writeTextFile("mots_sans_stopwords.txt", motsSansStopWords);

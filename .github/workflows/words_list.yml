@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: denoland/setup-deno@v1
+      - uses: denoland/setup-deno@v2
         with:
-          deno-version: "1.43.5"
+          deno-version: "2.1.6"
       - name: Update words list
         run: deno run --allow-net --allow-write pedantix_mots.ts
       - name: Update resources

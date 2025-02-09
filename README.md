@@ -1,6 +1,6 @@
 # pedantix_mots
 
-> Répertorie les mots les plus utilisés sur le jeu [pedantix](https://cemantix.certitudes.org/pedantix)
+> Répertorie les mots les plus utilisés sur le jeu [pedantix](https://pedantix.certitudes.org)
 
 [![Update words list](https://github.com/AnthonyJungmann/pedantix_mots/actions/workflows/words_list.yml/badge.svg?branch=master)](https://github.com/AnthonyJungmann/pedantix_mots/actions/workflows/words_list.yml)
 [![Made with Deno](https://img.shields.io/badge/Deno-2.1.6-blue?logo=deno&logoColor=white)](https://deno.land)
@@ -15,5 +15,5 @@ Ces deux listes sont mises à jour hebdomadairement, via le workflow [Update wor
 ## Comment lancer
 
 ```bash
-deno run --allow-net --allow-write pedantix_mots.ts
+deno run --allow-net --allow-write --allow-read pedantix_mots.ts
 ```

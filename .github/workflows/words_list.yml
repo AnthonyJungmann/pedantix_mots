@@ -14,12 +14,13 @@ jobs:
         with:
           deno-version: "2.1.6"
       - name: Update words list
-        run: deno run --allow-net --allow-write pedantix_mots.ts
+        run: deno run --allow-net --allow-write --allow-read pedantix_mots.ts
       - name: Update resources
         uses: test-room-7/action-update-file@v1
         with:
             file-path: |
               mots.txt
               mots_sans_stopwords.txt
+              history.json
             commit-msg: Update words list
             github-token: ${{ secrets.GITHUB_TOKEN }}  

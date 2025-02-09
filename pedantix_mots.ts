@@ -1,8 +1,19 @@
 import _ from "https://deno.land/x/lodash@4.17.15-es/lodash.js";
 
-const respPedantix: Response = await fetch("https://pedantix.certitudes.org/pedantix/history");
-let pages: any[] = await respPedantix.json();
-pages = pages.map((page) => page[2][0]).filter(Boolean);
+type Entry = [number, number, [string, string]];
+
+type History = Entry[];
+
+const respHistoryPedantix: Response = await fetch("https://pedantix.certitudes.org/history");
+const historyPedantix: History = await respHistoryPedantix.json();
+
+const historiqueFichier = JSON.parse(await Deno.readTextFile("history.json"));
+
+const historiqueEntier = _.uniqBy(_.concat(historyPedantix, historiqueFichier), (element: Entry) => element[0]).filter(element => element[2][0] !== '');
+
+await Deno.writeTextFile("history.json", JSON.stringify(historiqueEntier, null, 2));
+
+const pages = historiqueEntier.map((page: Entry) => page[2][0]).filter(Boolean);
 
 let tousLesMots: { [key: string]: number } = {};
 

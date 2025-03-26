@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: denoland/setup-deno@v2
         with:
-          deno-version: "2.1.6"
+          deno-version: "2.2.4"
       - name: Update words list
         run: deno run --allow-net --allow-write --allow-read pedantix_mots.ts
       - name: Update resources

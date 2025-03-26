@@ -3,7 +3,7 @@
 > Répertorie les mots les plus utilisés sur le jeu [pedantix](https://pedantix.certitudes.org)
 
 [![Update words list](https://github.com/AnthonyJungmann/pedantix_mots/actions/workflows/words_list.yml/badge.svg?branch=master)](https://github.com/AnthonyJungmann/pedantix_mots/actions/workflows/words_list.yml)
-[![Made with Deno](https://img.shields.io/badge/Deno-2.1.6-blue?logo=deno&logoColor=white)](https://deno.land)
+[![Made with Deno](https://img.shields.io/badge/Deno-2.2.5-blue?logo=deno&logoColor=white)](https://deno.land)
 
 ## Liste des mots
 

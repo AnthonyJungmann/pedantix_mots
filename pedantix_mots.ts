@@ -5,6 +5,14 @@ type Entry = [number, number, [string, string]];
 type History = Entry[];
 
 const respHistoryPedantix: Response = await fetch("https://pedantix.certitudes.org/history");
+
+if (!respHistoryPedantix.ok) {
+  console.error(`status : ${respHistoryPedantix.status}`);
+  console.error(`statusText : ${respHistoryPedantix.statusText}`);
+  console.error(`Response : ${await respHistoryPedantix.text()}`);
+  Deno.exit(1);
+}
+
 const historyPedantix: History = await respHistoryPedantix.json();
 
 const historiqueFichier = JSON.parse(await Deno.readTextFile("history.json"));

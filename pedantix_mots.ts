@@ -25,8 +25,50 @@ const pages = historiqueEntier.map((page: Entry) => page[2][0]).filter(Boolean);
 
 let tousLesMots: { [key: string]: number } = {};
 
+// Fonction de retry avec délai exponentiel pour gérer le rate-limiting
+async function fetchWithRetry(url: string, maxRetries = 3, delayMs = 1000): Promise<Response> {
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    const response = await fetch(url);
+
+    if (response.ok) {
+      return response;
+    }
+
+    // Si rate-limited ou erreur serveur, on retry
+    if (response.status === 429 || response.status >= 500) {
+      console.log(`Attempt ${attempt + 1} failed with status ${response.status}, retrying in ${delayMs}ms...`);
+      await new Promise(resolve => setTimeout(resolve, delayMs));
+      delayMs *= 2; // Backoff exponentiel
+      continue;
+    }
+
+    // Pour les autres erreurs, on échoue immédiatement
+    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+  }
+  throw new Error(`Failed after ${maxRetries} retries`);
+}
+
+// Petit délai entre chaque requête pour éviter le rate-limiting
+function delay(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 for (const page in pages) {
-  const respWikipedia: Response = await fetch(`https://fr.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${pages[page]}`);
+  // Délai de 200ms entre chaque requête pour éviter le rate-limiting
+  await delay(200);
+
+  const respWikipedia: Response = await fetchWithRetry(
+    `https://fr.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${encodeURIComponent(pages[page])}`
+  );
+
+  // Vérifier que le content-type est bien JSON avant de parser
+  const contentType = respWikipedia.headers.get("content-type") || "";
+  if (!contentType.includes("application/json")) {
+    console.error(`Unexpected content-type for page "${pages[page]}": ${contentType}`);
+    console.error(`Response: ${await respWikipedia.text()}`);
+    continue; // Skip cette page au lieu de crash
+  }
+
   const respWikipediaJson: any = await respWikipedia.json();
   const pageId: string = Object.keys(respWikipediaJson.query.pages)[0];
   const mots: string[] = respWikipediaJson.query.pages[pageId].extract.toLowerCase().split(/[^\p{Letter}]+/gu).filter(Boolean);

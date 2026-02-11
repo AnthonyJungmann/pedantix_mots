@@ -4,38 +4,24 @@ type Entry = [number, number, [string, string]];
 
 type History = Entry[];
 
-const respHistoryPedantix: Response = await fetch("https://pedantix.certitudes.org/history");
+// Headers communs pour simuler un navigateur et éviter les blocages
+const browserHeaders = {
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+  "Accept": "application/json, text/plain, */*",
+  "Accept-Language": "fr-FR,fr;q=0.9,en;q=0.8"
+};
 
-if (!respHistoryPedantix.ok) {
-  console.error(`status : ${respHistoryPedantix.status}`);
-  console.error(`statusText : ${respHistoryPedantix.statusText}`);
-  console.error(`Response : ${await respHistoryPedantix.text()}`);
-  Deno.exit(1);
-}
-
-const historyPedantix: History = await respHistoryPedantix.json();
-
-const historiqueFichier = JSON.parse(await Deno.readTextFile("history.json"));
-
-const historiqueEntier = _.uniqBy(_.concat(historyPedantix, historiqueFichier), (element: Entry) => element[0]).filter(element => element[2][0] !== '');
-
-await Deno.writeTextFile("history.json", JSON.stringify(historiqueEntier, null, 2));
-
-const pages = historiqueEntier.map((page: Entry) => page[2][0]).filter(Boolean);
-
-let tousLesMots: { [key: string]: number } = {};
-
-// Fonction de retry avec délai exponentiel pour gérer le rate-limiting
-async function fetchWithRetry(url: string, maxRetries = 3, delayMs = 1000): Promise<Response> {
+// Fonction de retry avec délai exponentiel pour gérer le rate-limiting et les blocages
+async function fetchWithRetry(url: string, maxRetries = 5, delayMs = 2000): Promise<Response> {
   for (let attempt = 0; attempt < maxRetries; attempt++) {
-    const response = await fetch(url);
+    const response = await fetch(url, { headers: browserHeaders });
 
     if (response.ok) {
       return response;
     }
 
-    // Si rate-limited ou erreur serveur, on retry
-    if (response.status === 429 || response.status >= 500) {
+    // Si rate-limited, forbidden, ou erreur serveur, on retry
+    if (response.status === 429 || response.status === 403 || response.status >= 500) {
       console.log(`Attempt ${attempt + 1} failed with status ${response.status}, retrying in ${delayMs}ms...`);
       await new Promise(resolve => setTimeout(resolve, delayMs));
       delayMs *= 2; // Backoff exponentiel
@@ -52,6 +38,19 @@ async function fetchWithRetry(url: string, maxRetries = 3, delayMs = 1000): Prom
 function delay(ms: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+const respHistoryPedantix: Response = await fetchWithRetry("https://pedantix.certitudes.org/history");
+const historyPedantix: History = await respHistoryPedantix.json();
+
+const historiqueFichier = JSON.parse(await Deno.readTextFile("history.json"));
+
+const historiqueEntier = _.uniqBy(_.concat(historyPedantix, historiqueFichier), (element: Entry) => element[0]).filter(element => element[2][0] !== '');
+
+await Deno.writeTextFile("history.json", JSON.stringify(historiqueEntier, null, 2));
+
+const pages = historiqueEntier.map((page: Entry) => page[2][0]).filter(Boolean);
+
+let tousLesMots: { [key: string]: number } = {};
 
 for (const page in pages) {
   // Délai de 200ms entre chaque requête pour éviter le rate-limiting

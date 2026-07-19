@@ -84,7 +84,7 @@ async function fetchWithRetry(
 
       retryDelay = Math.min(retryDelay, maxDelayMs);
 
-      console.log(`Attempt ${attempt} failed with status ${response.status}, retrying in ${retryDelay}ms...`);
+      console.log(`Attempt ${attempt} failed with status ${response.status} for ${url}, retrying in ${retryDelay}ms...`);
       await delay(retryDelay);
       currentDelay *= 2;
     } catch (error: unknown) {
@@ -207,7 +207,7 @@ for (let index = 0; index < pages.length; index += batchSize) {
 
   const wikipediaResponse = await fetchWithRetry(
     `https://fr.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${encodeURIComponent(batchTitles.join("|"))}`,
-    { maxRetries: 2, delayMs: 1_000, maxDelayMs: 3_000, timeoutMs: 15_000 },
+    { maxRetries: 20, delayMs: 1_000, maxDelayMs: 5_000, timeoutMs: 15_000 },
   );
 
   if (!wikipediaResponse) {

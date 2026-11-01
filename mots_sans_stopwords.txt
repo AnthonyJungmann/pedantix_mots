@@ -32,8 +32,8 @@ grand
 terme
 ensemble
 français
-av
 population
+av
 langue
 habitants
 roi
@@ -55,9 +55,9 @@ xixe
 développement
 anglais
 dynastie
+espèces
 mer
 époque
-espèces
 généralement
 chine
 grec
@@ -81,9 +81,9 @@ grandes
 ier
 important
 mouvement
+œuvre
 union
 raison
-œuvre
 culture
 compte
 point
